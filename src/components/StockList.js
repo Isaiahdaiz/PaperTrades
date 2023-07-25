@@ -1,9 +1,8 @@
 import '../App.css';
-import { useState, useRef, useEffect } from 'react';
-import { auth, firestore, user } from '../components/firebase'
+import { useState, useEffect } from 'react';
+import { auth, firestore} from '../components/firebase'
 import firebase from 'firebase/compat/app';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { Timestamp } from 'firebase/firestore';
 import StockModal from './StockModal';
 import fetchStocks from './fetchStocks';
 

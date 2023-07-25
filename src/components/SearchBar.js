@@ -23,8 +23,6 @@ function SearchBar() {
     if (ticker) {
       const results = await fetchStocks(ticker);
       console.log('Fetched results:', results);
-      console.log(results[0].ticker);
-      console.log(results[0].name);
       if (results[0] && results[0].name) {
         const snapshot = await stocksRef.where('ticker', '==', ticker).get();
         if (!snapshot.empty) {
@@ -44,6 +42,7 @@ function SearchBar() {
         setStocks([results[0]]);
       } else {
         console.error('Invalid stock data. Name field is undefined.');
+        setValidInput(false); // Reset validity on each change
       }
     } else {
       setStocks([]);
@@ -54,28 +53,17 @@ function SearchBar() {
   const inputClassName = validInput ? 'search-input' : 'search-input invalid';
 
   return (
-    <div>
+    <div className='searchBar'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           className={inputClassName}
-          placeholder="Search"
+          placeholder="Search Ticker"
           value={searchTerm}
           onChange={handleChange}
         />
         <button type="submit">Search</button>
       </form>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {stocks.map((stock, index) => (
-            <li key={index}>
-              Ticker: {stock.ticker} - Name: {stock.name} - Price: {stock.price}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 }

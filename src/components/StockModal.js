@@ -49,19 +49,21 @@ function StockModal(props) {
             .doc(userID)
             .collection('stocks')
             .where('ticker', '==', stock.ticker)
-            .where('type', '==', 'buy');
 
         try {
             const snapshot = await stockPurchasesRef.get();
             let totalPrice = 0;
             let totalQuantity = 0;
+            let differenceQuantity = 0; // Buy - Sell
             snapshot.forEach((doc) => {
                 const stockPurchase = doc.data();
                 totalPrice += stockPurchase.price;
                 totalQuantity++;
+                if (stockPurchase.type == 'buy') { differenceQuantity++ }
+                else { differenceQuantity-- };
             });
 
-            if (totalQuantity > 0) {
+            if (totalQuantity > 0 && differenceQuantity > 0) {
                 const averagePrice = totalPrice / totalQuantity;
                 setAveragePrice(averagePrice);
             } else {
@@ -136,6 +138,10 @@ function StockModal(props) {
                     // Calculate the new balance after selling the stocks
                     const updatedBalance = currentBalance + stock.price;
 
+                    if (quantity <= 0) {
+                        throw new Error('Insufficnet stock quantity')
+                    }
+
                     if (updatedBalance >= 0) {
                         // Update the user's balance in Firestore
                         return userRef.update({ balance: updatedBalance });
@@ -179,7 +185,7 @@ function StockModal(props) {
                 </div>
                 <div className="modal-body">
                     <p>Ticker: {stock.ticker}</p>
-                    <p>Price: {stock.price}</p>
+                    <p>Current Price: {stock.price}</p>
                     <p>Quantity Owned: {quantity !== null ? quantity : 'Loading...'}</p>
                     <p>
                         Average Cost Basis:{' '}

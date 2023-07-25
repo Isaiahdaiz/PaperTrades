@@ -5,6 +5,7 @@ import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import SignIn from './components/SignIn';
 import SignOut from './components/SignOut';
 import Dashboard from './components/Dashboard';
+import SearchBar from './components/SearchBar';
 
 
 
@@ -15,7 +16,11 @@ function App() {
   return (
     <div className="App">
       <header>
-        {user ? <SignOut /> : <SignIn />}
+        {user &&
+        <>
+        <SignOut />
+        <SearchBar />
+        </>}
       </header>
 
       <section>

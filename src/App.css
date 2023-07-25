@@ -4,20 +4,19 @@ body {
 
 .App {
   text-align: center;
-  max-width: 728px;
   margin: 0 auto;
 }
 
 .App header {
   background-color: #181717;
-  height: 10vh;
-  min-height: 50px;
+  height: 150px;
+  min-height: 130px;
   color: white;
   position: fixed;
   width: 100%;
-  max-width: 728px;
   top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   z-index: 99;
@@ -36,7 +35,7 @@ body {
 main {
   padding: 10px;
   height: 80vh;
-  margin: 10vh 0 10vh;
+  margin: 150px 0 10vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -55,20 +54,21 @@ main::-webkit-scrollbar-thumb {
 }
 
 form {
-  height: 10vh;
+  height: 5vh;
   min-height: 2rem;
-  position: fixed;
-  bottom: 0;
+  top: 0;
   background-color: rgb(24, 23, 23);
   width: 100%;
-  max-width: 728px;
   display: flex;
   font-size: 1.5rem;
 }
 
 form button {
+  min-width: 135px;
   width: 20%;
   background-color: rgb(56, 56, 143);
+  justify-content: center;
+  align-items: center ;
 }
 
 
@@ -103,7 +103,20 @@ button:disabled {
 .banner {
   display: flex;
   align-items: center;
+  width: 100%;;
   justify-content: space-between;
+}
+
+.banner p {
+  flex-grow: 2;
+  text-align: right;
+}
+
+.banner-container {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  gap: 5px;
 }
 
 .sign-in {
@@ -112,8 +125,6 @@ button:disabled {
   max-width: 400px;
   margin: 0 auto;
 }
-
-
 
 
 ul, li {
@@ -159,6 +170,9 @@ img {
   margin: 2px 5px;
 }
 
+.stock-table {
+  border: solid black 2px;
+}
 .stock-info {
   display: flex;
   align-items: center;
@@ -209,6 +223,10 @@ img {
   text-align: left;
 }
 
+.searchBar {
+  width: 100%;
+}
+
 .search-input {
   /* Styles for the valid input */
   padding: 8px;
@@ -236,7 +254,6 @@ img {
   cursor: pointer;
   transition: background-color 0.3s ease;
   padding: 10px;
-  margin-left: 10px;
 }
 
 .help:hover {
@@ -245,4 +262,30 @@ img {
 
 .help:focus {
   outline: none;
+}
+
+.signIn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo-login{
+  padding: 10px;
+  border-radius: 0;
+  height: auto;
+  width: 90%;
+  min-height: 50px;
+  min-width: 50px;
+  object-fit: contain;
+}
+
+.logo1{
+  border-radius: 0;
+  height: auto;
+  width: 100px;
+  min-height: 5px;
+  min-width: 5px;
+  object-fit: contain;
 }

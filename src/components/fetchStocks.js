@@ -4,7 +4,6 @@ import axios from 'axios';
 // This function fetches stocks based on the search term.
 async function fetchStocks(searchTerm) {
     try {
-        console.log(process.env.REACT_APP_API_TOKEN)
         // Replace with the actual URL for your API.
         const url = `https://api.stockdata.org/v1/data/quote?symbols=${searchTerm}&api_token=${process.env.REACT_APP_API_TOKEN}`;
         const response = await axios.get(url);
