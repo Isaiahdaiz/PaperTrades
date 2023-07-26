@@ -179,6 +179,7 @@ img {
 }
 .stock-info .price {
   color: green;
+  text-align: right;
 }
 .stock-info-container .last-updated {
   font-size: 0.8rem;
