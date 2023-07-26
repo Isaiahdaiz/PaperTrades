@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "paper-trades-9225",
     "public": "build",
     "ignore": [
       "firebase.json",
