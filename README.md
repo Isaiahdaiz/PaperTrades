@@ -1,3 +1,5 @@
+# Paper Trades
+
 'Paper Trades' is a web application that enables users to simulate stock trading by utilizing real-time stock data, managing user authentication through Google authentication via Firebase, and optimizing data storage using Firestore database.
 
 ![Paper Trades Demo](demo.gif)
